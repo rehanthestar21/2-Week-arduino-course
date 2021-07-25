@@ -54,5 +54,97 @@ void loop() {
 }
 ```
 
+## RFID with TAG
+
+
+## Humidity Sensor
+
+```
+#include "DHT.h"        // including the library of DHT11 temperature and humidity sensor
+#define DHTTYPE DHT11   // DHT 11
+#define dht_dpin 8	//data pin of DHT11 sensor attached to digital pin 2 of arduino
+DHT dht(dht_dpin, DHTTYPE); 
+void setup(){
+  Serial.begin(9600);
+  dht.begin();
+  
+} 
+void loop(){
+  float h = dht.readHumidity();
+  float t = dht.readTemperature(); 
+  Serial.println("Humidity and temperature\n\n");
+  Serial.print("Current humidity = ");
+  Serial.print(h);
+  Serial.print("%  ");
+  Serial.print("temperature = ");
+  Serial.print(t);
+}
+```
+## IR Sensor
+
+```
+int IRSensor = 2; // connect ir sensor to arduino pin 2
+int LED = 13; // conect Led to arduino pin 13
+
+
+
+void setup() 
+{
+
+
+
+  pinMode (IRSensor, INPUT); // sensor pin INPUT
+  pinMode (LED, OUTPUT); // Led pin OUTPUT
+}
+
+void loop()
+{
+  int statusSensor = digitalRead (IRSensor);
+  
+  if (statusSensor == 1)
+    digitalWrite(LED, LOW); // LED LOW
+  }
+  
+  else
+  {
+    digitalWrite(LED, HIGH); // LED High
+  }
+  
+}
+```
+
+
+## Servo Motor
+
+```
+#include <Servo.h>
+int servoPin = 3; 	//servo motor data pin attached to digital pin 3 of arduino 
+// Create a servo object 
+Servo Servo1; 
+void setup() { 
+   // We need to attach the servo to the used pin number 
+   Servo1.attach(servoPin); 
+}
+void loop(){ 
+   // Make servo go to 0 degrees 
+   Servo1.write(0); 
+   delay(1000); 
+   // Make servo go to 90 degrees 
+   Servo1.write(90); 
+   delay(1000); 
+   // Make servo go to 180 degrees 
+   Servo1.write(180); 
+   delay(1000); 
+}
+```
+
+## Bluetooth Module 
+
+```
+
+
+
+
+
 
 
