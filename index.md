@@ -3,7 +3,25 @@
 So i have listed the code documentation for all the components we will learn or have learned in the course.
 
 
-## 1. Ultrasonic Sensor
+## LED / Buzzer
+
+```
+void setup() {
+  // initialize digital pin LED_BUILTIN as an output.
+  pinMode(LED_BUILTIN, OUTPUT);
+}
+
+// the loop function runs over and over again forever
+void loop() {
+  digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
+  delay(1000);                       // wait for a second
+  digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
+  delay(1000);                       // wait for a second
+}
+```
+
+
+##  Ultrasonic Sensor
 
 ```
 const unsigned int TRIG_PIN=3;//trigger pin attached to digital pin 13
@@ -138,9 +156,95 @@ void loop(){
 }
 ```
 
+## Soil Moisture Sensor
+
+```
+int sense=0;	//soil sensor input at analog pin A0
+int value=0;
+int led=13;		//led attached at digital pin 13 of arduino
+void setup(){
+Serial.begin(9600);
+}
+void loop(){
+value=analogRead(sense);
+value=value/10;
+Serial.println(value);
+if(value<50)
+digitalWrite(led,HIGH);
+else
+digitalWrite(led,LOW);
+}
+```
+
+## Relay 
+
+```
+void setup() {
+  // initialize digital pin LED_BUILTIN as an output.
+  pinMode(LED_BUILTIN, OUTPUT);
+}
+
+// the loop function runs over and over again forever
+void loop() {
+  digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
+  delay(1000);                       // wait for a second
+  digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
+  delay(1000);                       // wait for a second
+}
+```
+
+
+## Motor Driver
+
+This is used as any other led which just inputs an digital output from the Arduino.
+
+
 ## Bluetooth Module 
 
 ```
+#include<SoftwareSerial.h>
+SoftwareSerial BT(10,11); //(Tx,Rx)
+String readData;
+
+void setup()
+{
+  BT.begin(9600);
+  Serial.begin(9600);
+ pinMode(A0, OUTPUT);
+}
+
+void loop()
+{
+  while(BT.available())
+  {
+  delay(10);
+  char c = BT.read();
+  readData+=c;
+}
+
+if(readData.length()>0)
+{
+  Serial.println(readData);
+
+if(readData == "ON")
+{
+  analogWrite(A0, 180);
+}
+
+  
+if(readData=="OFF")
+  {
+    analogWrite(A0, 0);
+  }
+  
+  else
+  {
+  readData="";
+}
+}
+}
+```
+
 
 
 
