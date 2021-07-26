@@ -5,7 +5,7 @@ So i have listed the code documentation for all the components we will learn or 
 
 ## LED / Buzzer
 
-```
+```c++
 void setup() {
   // initialize digital pin LED_BUILTIN as an output.
   pinMode(LED_BUILTIN, OUTPUT);
@@ -23,7 +23,7 @@ void loop() {
 
 ##  Ultrasonic Sensor
 
-```
+```c++
 const unsigned int TRIG_PIN=3;//trigger pin attached to digital pin 13
 const unsigned int ECHO_PIN=2;//echo pin attached to digital pin 12
 const unsigned int BAUD_RATE=9600;
@@ -58,7 +58,8 @@ void loop() {
 
 ## Light Sensor
 
-```
+```c++
+
 void setup() {
   Serial.begin(9600);
 }
@@ -77,7 +78,8 @@ void loop() {
 
 ## Humidity Sensor
 
-```
+```c++
+
 #include "DHT.h"        // including the library of DHT11 temperature and humidity sensor
 #define DHTTYPE DHT11   // DHT 11
 #define dht_dpin 8	//data pin of DHT11 sensor attached to digital pin 2 of arduino
@@ -100,7 +102,8 @@ void loop(){
 ```
 ## IR Sensor
 
-```
+```c++
+
 int IRSensor = 2; // connect ir sensor to arduino pin 2
 int LED = 13; // conect Led to arduino pin 13
 
@@ -134,7 +137,8 @@ void loop()
 
 ## Servo Motor
 
-```
+```c++
+
 #include <Servo.h>
 int servoPin = 3; 	//servo motor data pin attached to digital pin 3 of arduino 
 // Create a servo object 
@@ -158,7 +162,8 @@ void loop(){
 
 ## Soil Moisture Sensor
 
-```
+```c++
+
 int sense=0;	//soil sensor input at analog pin A0
 int value=0;
 int led=13;		//led attached at digital pin 13 of arduino
@@ -176,9 +181,10 @@ digitalWrite(led,LOW);
 }
 ```
 
-## Second Code of the Soil Moisture Sensor
+## Second Code for the Soil Moisture Sensor
 
-```
+```c++
+
 int sensorPin = A0; 
 int sensorValue;  
 int limit = 300; 
@@ -208,7 +214,8 @@ void loop() {
 
 ## Relay 
 
-```
+```c++
+
 void setup() {
   // initialize digital pin LED_BUILTIN as an output.
   pinMode(LED_BUILTIN, OUTPUT);
@@ -231,7 +238,8 @@ This is used as any other led which just inputs an digital output from the Ardui
 
 ## Bluetooth Module 
 
-```
+```c++
+
 #include<SoftwareSerial.h>
 SoftwareSerial BT(10,11); //(Tx,Rx)
 String readData;
@@ -278,7 +286,8 @@ if(readData=="OFF")
 ## Final Code of the Bluetooth Controlled Car.
 
 
-```
+```c++
+
 #include<SoftwareSerial.h>
 SoftwareSerial BT(10,11); //(Tx,Rx)
 String readData;
