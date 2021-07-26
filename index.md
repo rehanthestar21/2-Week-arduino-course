@@ -275,7 +275,81 @@ if(readData=="OFF")
 }
 ```
 
+## Final Code of the Bluetooth Controlled Car.
 
+
+```
+#include<SoftwareSerial.h>
+SoftwareSerial BT(10,11); //(Tx,Rx)
+String readData;
+void setup()
+{
+  BT.begin(9600);
+  Serial.begin(9600);
+ pinMode(A0, OUTPUT);
+ pinMode(A1, OUTPUT);
+ pinMode(A3, OUTPUT);
+ pinMode(A4, OUTPUT);
+}
+void loop()
+{
+  while(BT.available())
+  {
+  delay(10);
+  char c = BT.read();
+  readData+=c;
+}
+
+if(readData.length()>0)
+{
+  Serial.println(readData);
+  if(readData=="Front")
+  {
+    analogWrite(A0, 180);
+    analogWrite(A1, 0);
+    analogWrite(A3, 0);
+    analogWrite(A4, 180);
+  }
+
+  if(readData=="Back")
+  {
+    analogWrite(A0, 0);
+    analogWrite(A1, 180);
+    analogWrite(A3, 180);
+    analogWrite(A4, 0);
+  }
+  
+  if(readData=="Right")
+  {
+    analogWrite(A0, 0);
+    analogWrite(A1, 180);
+    analogWrite(A3, 0);
+    analogWrite(A4, 180);
+  }
+  if(readData=="Left")
+  {
+    analogWrite(A0, 180);
+    analogWrite(A1, 0);
+    analogWrite(A3, 180);
+    analogWrite(A4, 0);
+  }
+   
+  if(readData=="OFF")
+  {
+    analogWrite(A0, 0);
+    analogWrite(A1, 0);
+    analogWrite(A3, 0);
+    analogWrite(A4, 0);
+  }
+  
+  else
+  {
+    digitalWrite(13 ,LOW);
+  readData="";
+}
+}
+}
+```
 
 
 
