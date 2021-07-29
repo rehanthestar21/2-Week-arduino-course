@@ -143,7 +143,7 @@ void loop()
 
 ## PIR Sensor.
 
-```
+```c++
 int ledPin = 13;                // LED 
 int pirPin = 4;                 // PIR Out pin 
 void setup() {
