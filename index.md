@@ -75,8 +75,72 @@ void loop() {
 
 ## RFID with TAG
 
+Make sure you install MFRC522 library from Arduino IDE.
+
+```
+#include <SPI.h>
+#include <MFRC522.h>
+ 
+#define SS_PIN 10
+#define RST_PIN 9
+MFRC522 mfrc522(SS_PIN, RST_PIN);   // Create MFRC522 instance.
+ 
+void setup() 
+{
+  Serial.begin(9600);   // Initiate a serial communication
+  SPI.begin();      // Initiate  SPI bus
+  mfrc522.PCD_Init();   // Initiate MFRC522
+  Serial.println("Approximate your card to the reader...");
+  Serial.println();
+  pinMode(5, OUTPUT);
+
+}
+void loop() 
+{
+  // Look for new cards
+  if ( ! mfrc522.PICC_IsNewCardPresent()) 
+  {
+    return;
+  }
+  // Select one of the cards
+  if ( ! mfrc522.PICC_ReadCardSerial()) 
+  {
+    return;
+  }
+  //Show UID on serial monitor
+  Serial.print("UID tag :");
+  String content= "";
+  byte letter;
+  for (byte i = 0; i < mfrc522.uid.size; i++) 
+  {
+     Serial.print(mfrc522.uid.uidByte[i] < 0x10 ? " 0" : " ");
+     Serial.print(mfrc522.uid.uidByte[i], HEX);
+     content.concat(String(mfrc522.uid.uidByte[i] < 0x10 ? " 0" : " "));
+     content.concat(String(mfrc522.uid.uidByte[i], HEX));
+  }
+  Serial.println();
+  Serial.print("Message : ");
+  content.toUpperCase();
+  if (content.substring(1) == "4A 92 5F 3F") //change here the UID of the card/cards that you want to give access
+  {
+    Serial.println("Authorized access");
+    Serial.println();
+    digitalWrite(5, HIGH);
+    delay(10000);
+    digitalWrite(5, LOW);
+  }
+ 
+ else   {
+    Serial.println(" Access denied");
+    delay(3000);
+  }
+} 
+```
+
 
 ## Humidity Sensor
+
+Make sure you install the Library Of DHT11 temperature sensor from Arduino IDE.
 
 ```c++
 
@@ -111,9 +175,6 @@ int LED = 13; // conect Led to arduino pin 13
 
 void setup() 
 {
-
-
-
   pinMode (IRSensor, INPUT); // sensor pin INPUT
   pinMode (LED, OUTPUT); // Led pin OUTPUT
 }
@@ -137,6 +198,8 @@ void loop()
 
 ## Servo Motor
 
+Make sure you install the Servo Library from Arduino IDE.
+
 ```c++
 
 #include <Servo.h>
@@ -157,57 +220,6 @@ void loop(){
    // Make servo go to 180 degrees 
    Servo1.write(180); 
    delay(1000); 
-}
-```
-
-## Soil Moisture Sensor
-
-```c++
-
-int sense=0;	//soil sensor input at analog pin A0
-int value=0;
-int led=13;		//led attached at digital pin 13 of arduino
-void setup(){
-Serial.begin(9600);
-}
-void loop(){
-value=analogRead(sense);
-value=value/10;
-Serial.println(value);
-if(value<50)
-digitalWrite(led,HIGH);
-else
-digitalWrite(led,LOW);
-}
-```
-
-## Second Code for the Soil Moisture Sensor
-
-```c++
-
-int sensorPin = A0; 
-int sensorValue;  
-int limit = 300; 
-
-void setup() {
- Serial.begin(9600);
- pinMode(13, OUTPUT);
-}
-
-void loop() {
-
- sensorValue = analogRead(sensorPin); 
- Serial.println("Analog Value : ");
- Serial.println(sensorValue);
- 
- if (sensorValue<limit) {
- digitalWrite(13, HIGH); 
- }
- else {
- digitalWrite(13, LOW); 
- }
- 
- delay(1000); 
 }
 ```
 
