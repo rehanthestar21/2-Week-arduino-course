@@ -171,7 +171,7 @@ Make sure you install the Library Of DHT11 temperature sensor from Arduino IDE.
 
 #include "DHT.h"        // including the library of DHT11 temperature and humidity sensor
 #define DHTTYPE DHT11   // DHT 11
-#define dht_dpin 8	//data pin of DHT11 sensor attached to digital pin 2 of arduino
+#define dht_dpin 8	//data pin of DHT11 sensor attached to digital pin 8 of arduino
 DHT dht(dht_dpin, DHTTYPE); 
 void setup(){
   Serial.begin(9600);
@@ -187,6 +187,7 @@ void loop(){
   Serial.print("%  ");
   Serial.print("temperature = ");
   Serial.print(t);
+  delay(1000);
 }
 ```
 ## IR Sensor
