@@ -77,7 +77,7 @@ void loop() {
 
 Make sure you install MFRC522 library from Arduino IDE.
 
-# Reading data from an RFID tag
+### Reading data from an RFID tag
 
 After having the circuit ready, go to File > Examples > MFRC522 > DumpInfo and upload the code. This code will be available in Arduino IDE (after installing the RFID library). Run the code from the examples to find that the number of the RFID.
 
