@@ -23,6 +23,8 @@ void loop() {
 
 ##  Ultrasonic Sensor
 
+### Simple distance calcutor 
+
 ```c++
 const unsigned int TRIG_PIN=3;//trigger pin attached to digital pin 13
 const unsigned int ECHO_PIN=2;//echo pin attached to digital pin 12
@@ -56,6 +58,40 @@ void loop() {
  }
 ```
 
+### Ultrasonic with LED (Wave)
+
+```c++
+const unsigned int TRIG_PIN=3;//trigger pin attached to digital pin 13
+const unsigned int ECHO_PIN=2;//echo pin attached to digital pin 12
+const unsigned int BAUD_RATE=9600;
+
+void setup() {
+  pinMode(TRIG_PIN, OUTPUT);
+  pinMode(ECHO_PIN, INPUT);
+  pinMode(13, OUTPUT);
+  Serial.begin(BAUD_RATE);
+}
+
+void loop() {
+  digitalWrite(TRIG_PIN, LOW);
+  delayMicroseconds(2);
+  digitalWrite(TRIG_PIN, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(TRIG_PIN, LOW);
+  
+
+ const unsigned long duration= pulseIn(ECHO_PIN, HIGH);
+ int distance= duration/29/2;
+ if(distance<50){
+   digitalWrite(13, HIGH);    
+   } 
+  else{
+      digitalWrite(13, LOW); 
+  }
+ }
+ ``` 
+
+
 ## Light Sensor
 
 ### Simple value indicator
@@ -77,7 +113,7 @@ void loop() {
 
 ### Light Sensor with LED/Buzzer
 
-```
+```c++
 void setup() {
   Serial.begin(9600);
   pinMode(13, OUTPUT);
