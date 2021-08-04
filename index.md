@@ -1,4 +1,4 @@
-## Welcome to the code Documentation for the 2 week Arduino Course. 
+# Welcome to the code Documentation for the 2 week Arduino Course. 
 
 So i have listed the code documentation for all the components we will learn or have learned in the course.
 
@@ -21,7 +21,7 @@ void loop() {
 ```
 
 
-##  Ultrasonic Sensor
+# Ultrasonic Sensor
 
 ### Simple distance calcutor 
 
@@ -92,7 +92,7 @@ void loop() {
  ``` 
 
 
-## Light Sensor
+# Light Sensor
 
 ### Simple value indicator
 
