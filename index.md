@@ -58,6 +58,8 @@ void loop() {
 
 ## Light Sensor
 
+### Simple value indicator
+
 ```c++
 
 void setup() {
@@ -70,6 +72,30 @@ void loop() {
   Serial.println("Analog value : ");
   Serial.println(value);
   delay(250);
+}
+```
+
+### Light Sensor with LED/Buzzer
+
+```
+void setup() {
+  Serial.begin(9600);
+  pinMode(13, OUTPUT);
+}
+
+
+void loop() {
+  int value = analogRead(A0);
+  Serial.println("Analog value : ");
+  Serial.println(value);
+  delay(250);
+  
+  if(value<80){
+   digitalWrite(13, HIGH);    
+   } 
+  else{
+      digitalWrite(13, LOW); 
+  }
 }
 ```
 
