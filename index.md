@@ -227,7 +227,7 @@ void loop(){
 
 ## Humidity Sensor
 
-Make sure you install the Library Of DHT11 temperature sensor from Arduino IDE.
+Make sure you install the Library Of DHT11 temperature sensor library from Arduino IDE.
 
 ```c++
 
