@@ -271,7 +271,7 @@ void loop()
 {
   int statusSensor = digitalRead (IRSensor);
   
-  if (statusSensor == 1)
+  if (statusSensor == 1)(
     digitalWrite(LED, LOW); // LED LOW
   }
   
