@@ -387,7 +387,6 @@ if(readData=="OFF")
 
 
 ```c++
-
 #include<SoftwareSerial.h>
 SoftwareSerial BT(10,11); //(Tx,Rx)
 String readData;
@@ -450,7 +449,11 @@ if(readData.length()>0)
     analogWrite(A3, 0);
     analogWrite(A4, 0);
   }
- 
+    else
+  {
+    digitalWrite(13 ,LOW);
+  readData="";
+}
 }
 }
 ```
