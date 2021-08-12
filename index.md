@@ -383,7 +383,7 @@ if(readData=="OFF")
 }
 ```
 
-## Final Code of the Bluetooth Controlled Car.
+## Final Code of the Bluetooth Controlled Car.(Android Version)
 
 
 ```c++
@@ -458,6 +458,70 @@ if(readData.length()>0)
 }
 ```
 
+## Final Code of the Bluetooth Controlled Car.(MAC Version)
+
+
+```c++
+char val ;  // Please remember to connect the TX pin of the bluetooth module with the RX pin of the arduino and vice-visa.
+
+void setup(){
+  pinMode(A0, OUTPUT);
+  pinMode(A1, OUTPUT);
+  pinMode(A3, OUTPUT);
+  pinMode(A4, OUTPUT);
+  Serial.begin(9600);
+
+}
+
+void loop(){
+  if ( Serial.available())
+  {
+    val = Serial.read();
+   }
+
+   if(val=='s')
+  {
+    analogWrite(A0, 180);
+    analogWrite(A1, 0);
+    analogWrite(A3, 0);
+    analogWrite(A4, 180);
+  }
+
+  if(val=='w')
+  {
+    analogWrite(A0, 0);
+    analogWrite(A1, 180);
+    analogWrite(A3, 180);
+    analogWrite(A4, 0);
+  }
+  
+  if(val=='a')
+  {
+    analogWrite(A0, 0);
+    analogWrite(A1, 180);
+    analogWrite(A3, 0);
+    analogWrite(A4, 180);
+  }
+  if(val=='d')
+  {
+    analogWrite(A0, 180);
+    analogWrite(A1, 0);
+    analogWrite(A3, 180);
+    analogWrite(A4, 0);
+  }
+   
+  if(val=='o')
+  {
+    analogWrite(A0, 0);
+    analogWrite(A1, 0);
+    analogWrite(A3, 0);
+    analogWrite(A4, 0);
+  }
+
+  else{
+  }
+  }
+  ```
 
 
 
