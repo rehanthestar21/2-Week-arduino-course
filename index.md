@@ -510,7 +510,7 @@ void loop(){
     analogWrite(A4, 0);
   }
    
-  if(val=='o')
+  if(val=='q')
   {
     analogWrite(A0, 0);
     analogWrite(A1, 0);
