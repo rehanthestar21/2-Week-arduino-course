@@ -1,4 +1,4 @@
-# Welcome to the code Documentation for the 2 week Arduino Course. 
+# Welcome to the code Documentation for Robotics.  
 
 So i have listed the code documentation for all the components we will learn or have learned in the course.
 
